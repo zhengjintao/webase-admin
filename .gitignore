@@ -1,0 +1,52 @@
+# Maven #
+target/
+
+# IDEA #
+.idea/
+*.iml
+
+# Eclipse #
+.settings/
+.classpath
+.project
+
+# Project #
+log/
+
+.mvn/wrapper/maven-wrapper.jar
+
+.mvn/wrapper/maven-wrapper.properties
+
+LICENSE
+
+README.md
+
+webase-admin-server/.factorypath
+
+webase-admin-ui/README.zh-CN.md
+
+webase-admin-ui/.travis.yml
+
+webase-admin-ui/.prettierrc
+
+webase-admin-ui/.github/ISSUE_TEMPLATE/bug_report.md
+
+webase-admin-ui/.github/ISSUE_TEMPLATE/feature_request.md
+
+webase-admin-ui/.github/ISSUE_TEMPLATE/need-help-issue.md
+
+webase-admin-ui/.github/pull_request_template.md
+
+webase-admin-ui/.gitattributes
+
+webase-admin-ui/.browserslistrc
+
+webase-admin-ui/.editorconfig
+
+webase-admin-ui/.env
+
+webase-admin-ui/.env.development
+
+webase-admin-ui/.env.preview
+
+webase-admin-ui/.eslintrc.js
