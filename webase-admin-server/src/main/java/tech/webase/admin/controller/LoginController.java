@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tech.webase.admin.model.Result;
 import tech.webase.admin.model.dto.LoginDTO;
+import tech.webase.admin.model.dto.RegisterDTO;
 import tech.webase.admin.model.dto.UserTokenDTO;
 import tech.webase.admin.service.UserService;
 
@@ -24,6 +25,12 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @PostMapping("auth/register")
+    public Result<UserTokenDTO> register(@Validated @RequestBody RegisterDTO registerDto) {
+        UserTokenDTO  userInfoDTO = userService.register(registerDto);
+        return Result.success(userInfoDTO);
+    }
+    
     @PostMapping("auth/login")
     public Result<UserTokenDTO> login(@Validated @RequestBody LoginDTO loginDTO) {
         UserTokenDTO  userInfoDTO = userService.login(loginDTO);

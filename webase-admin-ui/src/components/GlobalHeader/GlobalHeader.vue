@@ -30,13 +30,15 @@ import UserMenu from '../tools/UserMenu'
 import SMenu from '../Menu/'
 import Logo from '../tools/Logo'
 import { mixin } from '@/utils/mixin'
+import LangSelect from '../tools/LangSelect.vue'
 
 export default {
   name: 'GlobalHeader',
   components: {
     UserMenu,
     SMenu,
-    Logo
+    Logo,
+    LangSelect
   },
   mixins: [mixin],
   props: {

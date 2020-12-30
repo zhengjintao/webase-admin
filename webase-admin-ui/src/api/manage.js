@@ -2,6 +2,7 @@ import { axios } from '@/utils/request'
 
 const api = {
   user: '/user',
+  userSearch: '/user/search',
   lockUser: '/user/{id}/lock',
   role: '/role',
   service: '/service',
@@ -54,6 +55,14 @@ export function saveRole (data) {
 export function getUserList (parameter) {
   return axios({
     url: api.user,
+    method: 'get',
+    params: parameter
+  })
+}
+
+export function searchUser (parameter) {
+  return axios({
+    url: api.userSearch,
     method: 'get',
     params: parameter
   })

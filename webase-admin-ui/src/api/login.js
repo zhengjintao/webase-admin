@@ -27,6 +27,14 @@ export function login (parameter) {
   })
 }
 
+export function register (parameter) {
+  return axios({
+    url: '/auth/register',
+    method: 'post',
+    data: parameter
+  })
+}
+
 export function getSmsCaptcha (parameter) {
   return axios({
     url: api.SendSms,

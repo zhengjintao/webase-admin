@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { getInfo, login, logout } from '@/api/login'
+import { getInfo, login, logout, register } from '@/api/login'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 import { welcome } from '@/utils/util'
 
@@ -8,9 +8,10 @@ const user = {
     token: '',
     name: '',
     welcome: '',
-    avatar: '',
+    avatar: '/avatar.jpg',
     permissions: [],
-    info: {}
+    info: {},
+    lang: 'CN'
   },
 
   mutations: {
@@ -29,6 +30,9 @@ const user = {
     },
     SET_INFO: (state, info) => {
       state.info = info
+    },
+    SET_LANG: (state, lang) => {
+      state.lang = lang
     }
   },
 
@@ -37,8 +41,25 @@ const user = {
     Login ({ commit }, userInfo) {
       return new Promise((resolve, reject) => {
         login(userInfo).then(response => {
+          if (response.success) {
+            const result = response.result
+            // 7天有效期
+            Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
+            commit('SET_TOKEN', result.token)
+          }
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+
+    // 注册
+    Register ({ commit }, userInfo) {
+      return new Promise((resolve, reject) => {
+        register(userInfo).then(response => {
           const result = response.result
-          //7天有效期
+          // 7天有效期
           Vue.ls.set(ACCESS_TOKEN, result.token, 7 * 24 * 60 * 60 * 1000)
           commit('SET_TOKEN', result.token)
           resolve()
@@ -77,8 +98,11 @@ const user = {
           Vue.ls.remove(ACCESS_TOKEN)
         })
       })
-    }
+    },
 
+    SetLang ({ commit }, lang) {
+      commit('SET_LANG', lang)
+    }
   }
 }
 

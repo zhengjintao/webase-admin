@@ -10,31 +10,32 @@ const constantRouterComponents = {
   BlankLayout: BlankLayout,
   RouteView: RouteView,
   PageView: PageView,
-  '403': () => import(/* webpackChunkName: "error" */ '@/views/exception/403'),
-  '404': () => import(/* webpackChunkName: "error" */ '@/views/exception/404'),
-  '500': () => import(/* webpackChunkName: "error" */ '@/views/exception/500'),
+  '403': () => import(/* webpackChunkName: "error" */ '@/pages/exception/403'),
+  '404': () => import(/* webpackChunkName: "error" */ '@/pages/exception/404'),
+  '500': () => import(/* webpackChunkName: "error" */ '@/pages/exception/500'),
 
   // 你需要动态引入的页面组件
-  'Workplace': () => import('@/views/dashboard/Workplace'),
-  'Analysis': () => import('@/views/dashboard/Analysis'),
+  'Workplace': () => import('@/pages/dashboard/Workplace'),
+  'Analysis': () => import('@/pages/dashboard/Analysis'),
   // 用户
-  'UserList': () => import('@/views/user/UserList'),
-  'RoleList': () => import('@/views/user/RoleList'),
-  'PermissionList': () => import('@/views/user/PermissionList'),
+  'UserList': () => import('@/pages/user/UserList'),
+  'RoleList': () => import('@/pages/user/RoleList'),
+  'PermissionList': () => import('@/pages/user/PermissionList'),
 
   // exception
-  'Exception403': () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
-  'Exception404': () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
-  'Exception500': () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
+  'Exception403': () => import(/* webpackChunkName: "fail" */ '@/pages/exception/403'),
+  'Exception404': () => import(/* webpackChunkName: "fail" */ '@/pages/exception/404'),
+  'Exception500': () => import(/* webpackChunkName: "fail" */ '@/pages/exception/500'),
 
   // account
-  'AccountCenter': () => import('@/views/account/center/Index'),
-  'AccountSettings': () => import('@/views/account/settings/Index'),
-  'BaseSettings': () => import('@/views/account/settings/BaseSetting'),
-  'SecuritySettings': () => import('@/views/account/settings/Security'),
-  'CustomSettings': () => import('@/views/account/settings/Custom'),
-  'BindingSettings': () => import('@/views/account/settings/Binding'),
-  'NotificationSettings': () => import('@/views/account/settings/Notification')
+  'AccountCenter': () => import('@/pages/account/center/Index'),
+  'ShipCenter': () => import('@/pages/ship/list/List'),
+  'AccountSettings': () => import('@/pages/account/settings/Index'),
+  'BaseSettings': () => import('@/pages/account/settings/BaseSetting'),
+  'SecuritySettings': () => import('@/pages/account/settings/Security'),
+  'CustomSettings': () => import('@/pages/account/settings/Custom'),
+  'BindingSettings': () => import('@/pages/account/settings/Binding'),
+  'NotificationSettings': () => import('@/pages/account/settings/Notification')
 }
 
 // 前端未找到页面路由（固定不用改）

@@ -12,3 +12,6 @@ mybatis: # mybatis 配置
 password: #shiro
   algorithmName: md5
   hashIterations: 2
+
+storage:
+  location: /Users/kimitei/upload-dir

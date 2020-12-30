@@ -3,11 +3,14 @@ package tech.webase.admin.service;
 import tech.webase.admin.exception.BusinessException;
 import tech.webase.admin.model.PageWrapper;
 import tech.webase.admin.model.dto.LoginDTO;
+import tech.webase.admin.model.dto.RegisterDTO;
+import tech.webase.admin.model.dto.RoleDTO;
 import tech.webase.admin.model.dto.UserPageDTO;
 import tech.webase.admin.model.dto.UserTokenDTO;
 import tech.webase.admin.model.entity.User;
 import tech.webase.admin.model.query.UserQuery;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
@@ -46,10 +49,14 @@ public interface UserService {
     User queryByUsername(String username);
 
     UserTokenDTO login(LoginDTO loginDTO);
+    
+    UserTokenDTO register(RegisterDTO registerDTO);
 
     PageWrapper<UserPageDTO> queryUserPage(UserQuery userQuery);
 
     void updateNotNull(User user);
 
     void deleteById(Long id);
+    
+    List<User> searchUserList(String userName);
 }

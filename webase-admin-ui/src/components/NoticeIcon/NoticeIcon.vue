@@ -13,7 +13,8 @@
       <a-spin :spinning="loading">
         <a-tabs>
           <a-tab-pane tab="通知" key="1">
-            <a-list>
+            暂时没有通知
+            <!--<a-list>
               <a-list-item>
                 <a-list-item-meta title="你收到了 14 份新周报" description="一年前">
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/ThXAXghbEsBCCSDihZxY.png"/>
@@ -29,19 +30,19 @@
                   <a-avatar style="background-color: white" slot="avatar" src="https://gw.alipayobjects.com/zos/rmsportal/kISTdvpyTAhtGxpovNWd.png"/>
                 </a-list-item-meta>
               </a-list-item>
-            </a-list>
+            </a-list>-->
           </a-tab-pane>
           <a-tab-pane tab="消息" key="2">
-            123
+            暂时没有消息
           </a-tab-pane>
           <a-tab-pane tab="待办" key="3">
-            123
+            暂时没有待办事项
           </a-tab-pane>
         </a-tabs>
       </a-spin>
     </template>
     <span @click="fetchNotice" class="header-notice" ref="noticeRef" style="padding: 0 18px">
-      <a-badge count="12">
+      <a-badge count="0">
         <a-icon style="font-size: 16px; padding: 4px" type="bell" />
       </a-badge>
     </span>
@@ -63,7 +64,7 @@ export default {
         this.loading = true
         setTimeout(() => {
           this.loading = false
-        }, 2000)
+        }, 1000)
       } else {
         this.loading = false
       }

@@ -44,6 +44,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/datasource/initialize", "anon");
         // end: 此处仅仅演示模式使用，实际开发中请删除
         filterChainDefinitionMap.put("/auth/login", "anon");
+
+        filterChainDefinitionMap.put("/auth/register", "anon");
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
         filterChainDefinitionMap.put("/auth/logout", "anon");
         //过滤链定义，从上向下顺序执行，一般将/**放在最为下边
@@ -60,8 +62,9 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/loading/**", "anon");
-        filterChainDefinitionMap.put("/avatar2.jpg", "anon");
+        filterChainDefinitionMap.put("/avatar.jpg", "anon");
         filterChainDefinitionMap.put("/index.html", "anon");
+        filterChainDefinitionMap.put("/tinymce/**", "anon");
         filterChainDefinitionMap.put("/logo.png", "anon");
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterChainDefinitionMap.put("/**", "authc");

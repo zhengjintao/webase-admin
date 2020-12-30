@@ -18,7 +18,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Webase Admin',
+      default: '中日物流',
       required: false
     },
     showTitle: {

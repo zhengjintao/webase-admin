@@ -1,11 +1,15 @@
 <template>
   <div class="user-wrapper">
     <div class="content-box">
-      <a href="https://pro.loacg.com/docs/getting-started" target="_blank">
+      <!--<a href="https://pro.loacg.com/docs/getting-started" target="_blank">
         <span class="action">
           <a-icon type="question-circle-o"></a-icon>
         </span>
-      </a>
+      </a>-->
+      <span @click="setFullScreen" class="action">
+        <a-icon type="fullscreen" />
+      </span>
+      <lang-select></lang-select>
       <notice-icon class="action"/>
       <a-dropdown>
         <span class="action ant-dropdown-link user-dropdown-menu">
@@ -25,10 +29,10 @@
               <span>账户设置</span>
             </router-link>
           </a-menu-item>
-          <a-menu-item key="2" disabled>
+          <!-- <a-menu-item key="2" disabled>
             <a-icon type="setting"/>
             <span>测试</span>
-          </a-menu-item>
+          </a-menu-item>-->
           <a-menu-divider/>
           <a-menu-item key="3">
             <a href="javascript:;" @click="handleLogout">
@@ -45,15 +49,21 @@
 <script>
 import NoticeIcon from '@/components/NoticeIcon'
 import { mapActions, mapGetters } from 'vuex'
+import LangSelect from './LangSelect.vue'
 
 export default {
   name: 'UserMenu',
   components: {
-    NoticeIcon
+    NoticeIcon,
+    LangSelect
+  },
+  data () {
+    return {
+      isFullScreent: false
+    }
   },
   computed: {
     ...mapGetters(['nickname', 'avatar'])
-
   },
   methods: {
     ...mapActions(['Logout']),
@@ -76,6 +86,22 @@ export default {
         onCancel () {
         }
       })
+    },
+    setFullScreen () {
+      if (this.isFullScreent) {
+        var exitMethod = document.exitFullscreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.webkitExitFullscreen
+        if (exitMethod) {
+          exitMethod.call(document)
+          this.isFullScreent = false
+        }
+      } else {
+        var el = document.documentElement
+        var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen || document.msFullscreenEnabled
+        if (typeof rfs !== 'undefined' && rfs) {
+          rfs.call(el)
+          this.isFullScreent = true
+        }
+      }
     }
   }
 }

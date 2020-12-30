@@ -124,7 +124,7 @@ export default {
 
 <style lang="less" scoped>
   .content {
-    margin: 24px 24px 0;
+    margin: 12px 12px 0;
     .link {
       margin-top: 16px;
       &:not(:empty) {
@@ -141,8 +141,8 @@ export default {
           vertical-align: middle;
         }
         span {
-          height: 24px;
-          line-height: 24px;
+          height: 12px;
+          line-height: 12px;
           display: inline-block;
           vertical-align: middle;
         }

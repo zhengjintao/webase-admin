@@ -4,25 +4,25 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Ant Design</span>
+            <img src="~@/assets/logo.png" class="logo" alt="logo">
+            <span class="title">中日物流</span>
           </a>
         </div>
         <div class="desc">
-          Ant Design 是西湖区最具影响力的 Web 设计规范
+          便捷高效实惠中日物流,助力您美好生活
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <div class="links">
+        <!--<div class="links">
           <a href="_self">帮助</a>
           <a href="_self">隐私</a>
           <a href="_self">条款</a>
-        </div>
+        </div>-->
         <div class="copyright">
-          Copyright &copy; 2018 白鹭学园技术组出品
+          Copyright &copy; 2020 艺扬科技出品
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ export default {
       min-height: 100%;
       background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
       background-size: 100%;
-      padding: 110px 0 144px;
+      padding: 50px 0 144px;
       position: relative;
 
       a {
@@ -99,9 +99,9 @@ export default {
           }
 
           .title {
-            font-size: 33px;
+            font-size: 30px;
             color: rgba(0, 0, 0, .85);
-            font-family: Avenir, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
             font-weight: 600;
             position: relative;
             top: 2px;

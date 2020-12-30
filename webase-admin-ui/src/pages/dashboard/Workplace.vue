@@ -106,6 +106,9 @@
         </a-col>
       </a-row>
     </div>
+    <div>
+      <HelloWorld />
+    </div>
   </page-view>
 </template>
 
@@ -120,6 +123,8 @@ import { Radar } from '@/components'
 // import { getRoleList, getServiceList } from '@/api/manage'
 import { getRoleList } from '@/api/manage'
 
+import HelloWorld from '@/components/tinymce-editor/HelloWorld'
+
 const DataSet = require('@antv/data-set')
 
 export default {
@@ -127,7 +132,8 @@ export default {
   components: {
     PageView,
     HeadInfo,
-    Radar
+    Radar,
+    HelloWorld
   },
   data () {
     return {

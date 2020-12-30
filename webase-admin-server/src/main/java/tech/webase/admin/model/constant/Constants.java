@@ -18,7 +18,7 @@ public class Constants {
     /**
      * 默认头像
      */
-    public static final String DEFAULT_AVATAR = "/avatar2.jpg";
+    public static final String DEFAULT_AVATAR = "/avatar.jpg";
 
     /**
      * 构造函数私有化，避免被实例化

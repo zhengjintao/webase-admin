@@ -9,8 +9,11 @@ import tech.webase.admin.mapper.UserMapper;
 import tech.webase.admin.model.PageWrapper;
 import tech.webase.admin.model.constant.Constants;
 import tech.webase.admin.model.dto.LoginDTO;
+import tech.webase.admin.model.dto.RegisterDTO;
+import tech.webase.admin.model.dto.RoleDTO;
 import tech.webase.admin.model.dto.UserPageDTO;
 import tech.webase.admin.model.dto.UserTokenDTO;
+import tech.webase.admin.model.entity.Role;
 import tech.webase.admin.model.entity.User;
 import tech.webase.admin.model.enumeration.CommonResultStatus;
 import tech.webase.admin.model.query.PageQuery;
@@ -50,8 +53,15 @@ public class UserServiceImpl implements UserService {
         if (u != null) {
             throw new BusinessException(CommonResultStatus.FAILED_USER_ALREADY_EXIST);
         }
-        //设置默认密码
-        user.setPassword(Constants.DEFAULT_PASSWORD);
+        
+        if(user.getPassword() == null) {
+            //设置默认密码
+            user.setPassword(Constants.DEFAULT_PASSWORD);
+        }
+        
+        if(user.getRoleIds() == null) {
+        	user.setRoleIds("5");
+        }
         // 加密密码
         passwordHelper.encryptPassword(user);
         userMapper.insertSelective(user);
@@ -98,6 +108,28 @@ public class UserServiceImpl implements UserService {
         if (!passwordHelper.verifyPassword(user, loginDTO.getPassword())) {
             throw new BusinessException(CommonResultStatus.LOGIN_ERROR, "密码错误");
         }
+        UserTokenDTO userInfoDTO = new UserTokenDTO();
+        userInfoDTO.setUsername(user.getUsername());
+        userInfoDTO.setToken(JwtUtil.sign(user.getUsername(), String.valueOf(System.currentTimeMillis())));
+        return userInfoDTO;
+    }
+    
+    @Override
+    public UserTokenDTO register(RegisterDTO registerDTO) {
+    	User user = userMapper.selectByUsername(registerDTO.getUsername());
+        if (user != null) {
+            throw new BusinessException(CommonResultStatus.LOGIN_ERROR, "用户已经存在");
+        }
+        
+        if (!registerDTO.getPassword().equals(registerDTO.getPassword2())) {
+            throw new BusinessException(CommonResultStatus.LOGIN_ERROR, "密码不一致");
+        }
+        
+        user = new User();
+        user.setUsername(registerDTO.getUsername());
+        user.setPassword(registerDTO.getPassword());
+        
+        createUser(user);
         UserTokenDTO userInfoDTO = new UserTokenDTO();
         userInfoDTO.setUsername(user.getUsername());
         userInfoDTO.setToken(JwtUtil.sign(user.getUsername(), String.valueOf(System.currentTimeMillis())));
@@ -168,5 +200,11 @@ public class UserServiceImpl implements UserService {
                 .map(Long::valueOf)
                 .collect(Collectors.toList()).toArray(new Long[0]);
     }
+
+	@Override
+	public List<User> searchUserList(String userName) {
+		userName = userName == null ? "" : "%" + userName + "%";
+		return  userMapper.createCriteria().andLike(User::getUsername, userName).selectList();
+	}
 
 }

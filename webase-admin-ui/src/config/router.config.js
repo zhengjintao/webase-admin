@@ -22,17 +22,17 @@ export const asyncRouterMap = [
           {
             path: '/user/system-user',
             name: 'UserList',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/user/UserList'),
+            component: () => import(/* webpackChunkName: "result" */ '@/pages/user/UserList'),
             meta: { title: '用户列表', keepAlive: false, hiddenHeaderContent: true, permission: ['result'] }
           }, {
             path: '/user/system-role',
             name: 'RoleList',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/user/RoleList'),
+            component: () => import(/* webpackChunkName: "result" */ '@/pages/user/RoleList'),
             meta: { title: '角色列表', keepAlive: false, hiddenHeaderContent: true, permission: ['result'] }
           }, {
             path: '/user/system-permission',
             name: 'PermissionList',
-            component: () => import(/* webpackChunkName: "result" */ '@/views/user/PermissionList'),
+            component: () => import(/* webpackChunkName: "result" */ '@/pages/user/PermissionList'),
             meta: { title: '权限列表', keepAlive: false, hiddenHeaderContent: true, permission: ['result'] }
           }
         ]
@@ -48,7 +48,7 @@ export const asyncRouterMap = [
           {
             path: '/dashboard/analysis',
             name: 'Analysis',
-            component: () => import('@/views/dashboard/Analysis'),
+            component: () => import('@/pages/dashboard/Analysis'),
             meta: { title: '分析页', keepAlive: false, permission: ['dashboard'] }
           },
           // 外部链接
@@ -60,7 +60,7 @@ export const asyncRouterMap = [
           {
             path: '/dashboard/workplace',
             name: 'Workplace',
-            component: () => import('@/views/dashboard/Workplace'),
+            component: () => import('@/pages/dashboard/Workplace'),
             meta: { title: '工作台', keepAlive: true, permission: ['dashboard'] }
           }
         ]
@@ -77,19 +77,19 @@ export const asyncRouterMap = [
           {
             path: '/exception/403',
             name: 'Exception403',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/403'),
+            component: () => import(/* webpackChunkName: "fail" */ '@/pages/exception/403'),
             meta: { title: '403', permission: ['exception'] }
           },
           {
             path: '/exception/404',
             name: 'Exception404',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404'),
+            component: () => import(/* webpackChunkName: "fail" */ '@/pages/exception/404'),
             meta: { title: '404', permission: ['exception'] }
           },
           {
             path: '/exception/500',
             name: 'Exception500',
-            component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/500'),
+            component: () => import(/* webpackChunkName: "fail" */ '@/pages/exception/500'),
             meta: { title: '500', permission: ['exception'] }
           }
         ]
@@ -106,13 +106,13 @@ export const asyncRouterMap = [
           {
             path: '/account/center',
             name: 'center',
-            component: () => import('@/views/account/center/Index'),
+            component: () => import('@/pages/account/center/Index'),
             meta: { title: '个人中心', keepAlive: true, permission: ['user'] }
           },
           {
             path: '/account/settings',
             name: 'settings',
-            component: () => import('@/views/account/settings/Index'),
+            component: () => import('@/pages/account/settings/Index'),
             meta: { title: '个人设置', hideHeader: true, permission: ['user'] },
             redirect: '/account/settings/base',
             hideChildrenInMenu: true,
@@ -120,34 +120,50 @@ export const asyncRouterMap = [
               {
                 path: '/account/settings/base',
                 name: 'BaseSettings',
-                component: () => import('@/views/account/settings/BaseSetting'),
+                component: () => import('@/pages/account/settings/BaseSetting'),
                 meta: { title: '基本设置', permission: ['user'] }
               },
               {
                 path: '/account/settings/security',
                 name: 'SecuritySettings',
-                component: () => import('@/views/account/settings/Security'),
+                component: () => import('@/pages/account/settings/Security'),
                 meta: { title: '安全设置', keepAlive: true, permission: ['user'] }
               },
               {
                 path: '/account/settings/custom',
                 name: 'CustomSettings',
-                component: () => import('@/views/account/settings/Custom'),
+                component: () => import('@/pages/account/settings/Custom'),
                 meta: { title: '个性化设置', keepAlive: true, permission: ['user'] }
               },
               {
                 path: '/account/settings/binding',
                 name: 'BindingSettings',
-                component: () => import('@/views/account/settings/Binding'),
+                component: () => import('@/pages/account/settings/Binding'),
                 meta: { title: '账户绑定', keepAlive: true, permission: ['user'] }
               },
               {
                 path: '/account/settings/notification',
                 name: 'NotificationSettings',
-                component: () => import('@/views/account/settings/Notification'),
+                component: () => import('@/pages/account/settings/Notification'),
                 meta: { title: '新消息通知', keepAlive: true, permission: ['user'] }
               }
             ]
+          }
+        ]
+      },
+
+      {
+        path: '/ship',
+        component: RouteView,
+        redirect: '/ship/list',
+        name: 'ship',
+        meta: { title: 'Shiping', icon: 'user', keepAlive: true },
+        children: [
+          {
+            path: '/ship/list',
+            name: 'ship',
+            component: () => import('@/pages/ship/list/List'),
+            meta: { title: 'Shiping', keepAlive: true }
           }
         ]
       }
@@ -172,17 +188,17 @@ export const constantRouterMap = [
       {
         path: 'login',
         name: 'login',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Login')
+        component: () => import(/* webpackChunkName: "user" */ '@/pages/user/Login')
       },
       {
         path: 'register',
         name: 'register',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/Register')
+        component: () => import(/* webpackChunkName: "user" */ '@/pages/user/Register')
       },
       {
         path: 'register-result',
         name: 'registerResult',
-        component: () => import(/* webpackChunkName: "user" */ '@/views/user/RegisterResult')
+        component: () => import(/* webpackChunkName: "user" */ '@/pages/user/RegisterResult')
       },
       {
         path: 'recover',
@@ -200,14 +216,27 @@ export const constantRouterMap = [
       {
         path: 'home',
         name: 'TestHome',
-        component: () => import('@/views/Home')
+        component: () => import('@/pages/Home')
+      }
+    ]
+  },
+
+  {
+    path: '/test2',
+    component: BlankLayout,
+    redirect: '/test2/home',
+    children: [
+      {
+        path: 'home',
+        name: 'Test2Home',
+        component: () => import('@/pages/ship/list/List')
       }
     ]
   },
 
   {
     path: '/404',
-    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
+    component: () => import(/* webpackChunkName: "fail" */ '@/pages/exception/404')
   }
 
 ]

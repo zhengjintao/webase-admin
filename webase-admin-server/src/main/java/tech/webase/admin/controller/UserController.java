@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import tech.webase.admin.model.PageWrapper;
 import tech.webase.admin.model.Result;
+import tech.webase.admin.model.dto.RoleDTO;
 import tech.webase.admin.model.dto.UserPageDTO;
 import tech.webase.admin.model.entity.User;
 import tech.webase.admin.model.enumeration.CommonResultStatus;
@@ -17,6 +18,7 @@ import tech.webase.admin.service.UserService;
 
 import javax.validation.constraints.NotNull;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author cjbi
@@ -33,6 +35,12 @@ public class UserController {
     @RequiresPermissions("user:view")
     public Result<PageWrapper<UserPageDTO>> queryUserList(UserQuery userQuery) {
         return Result.success(userService.queryUserPage(userQuery));
+    }
+    
+    @GetMapping("/search")
+    @RequiresPermissions("user:view")
+    public Result<List<User>> queryRoleList(String userName) {
+        return Result.success(userService.searchUserList(userName));
     }
 
     @PostMapping
